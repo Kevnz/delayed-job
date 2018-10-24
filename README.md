@@ -4,35 +4,36 @@ delayed-job is a horizontally scalable Node.js implementation of Ruby's delayed_
 
 # Installation
 
-```
-npm install delayed-job
+```bash
+npm install @kev_nz/delayed-job
 ```
 
 # Usage
-```
-var Scheduler = require('delayed-job');
+```javascript
+const Scheduler = require('@kev_nz/delayed-job');
 
-var schedule = Scheduler.createSchedule({
+const schedule = Scheduler.createSchedule({
+  url: '',
   backend: {
-    name: 'redis',
+    name: 'redis', // memory is also available
     jobHoldingBay: 'myUniqueListKey'
   }
 });
 
-schedule.on('job',function(job) {
+schedule.on('job', job => {
   console.log('Received job',job);
 });
 
-var myJob = {
+const myJob = {
   title: 'Great Gig In The Sky'
 };
 
-schedule.delay(myJob,2000);
+schedule.delay(myJob, 2000);
 ```
 
 # API
 
-## schedular.delay(job,timeout)
+## schedular.delay(job, timeout)
 Schedule a job for execution
 
 # Assumptions
