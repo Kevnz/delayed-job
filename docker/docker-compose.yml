@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  dj_redis:
+    image: redis:4
+    ports:
+      - "6379:6379"
