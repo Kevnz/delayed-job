@@ -27,12 +27,13 @@
 
 <body>
   <div class="container">
-  <h1 id="delayed-job">delayed-job</h1>
+  <h1 id="kev_nzdelayed-job"><a href="https://github.com/kev">@kev</a>_nz/delayed-job</h1>
 <p>delayed-job is a horizontally scalable Node.js implementation of Ruby's delayed_job. Using semaphore locks it aims to provide an atomic interface to a federation of workers operating on the same job queue. Initial work has focussed on a Redis backed database, however more backend implementations are possible.</p>
+<p><img src="https://kevinisom.info/delayed-job/delayed-job.png" alt="delayed-job" /></p>
 <h2 id="installation">Installation</h2>
 <pre><code class="hljs bash language-bash">npm install @kev_nz/delayed-job</code></pre>
 <h2 id="usage">Usage</h2>
-<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> Scheduler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@kev_nz/delayed-job'</span>);
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> Scheduler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@kev_nz/delayed-job'</span>)
 
 <span class="hljs-keyword">const</span> schedule = Scheduler.createSchedule({
   <span class="hljs-attr">url</span>: <span class="hljs-string">''</span>,
@@ -40,17 +41,17 @@
     <span class="hljs-attr">name</span>: <span class="hljs-string">'redis'</span>, <span class="hljs-comment">// memory is also available</span>
     jobHoldingBay: <span class="hljs-string">'myUniqueListKey'</span>
   }
-});
+})
 
 schedule.on(<span class="hljs-string">'job'</span>, job =&gt; {
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Received job'</span>,job);
-});
+})
 
 <span class="hljs-keyword">const</span> myJob = {
   <span class="hljs-attr">title</span>: <span class="hljs-string">'Great Gig In The Sky'</span>
-};
+}
 
-schedule.delay(myJob, <span class="hljs-number">2000</span>);</code></pre>
+schedule.delay(myJob, <span class="hljs-number">2000</span>)</code></pre>
 <h2 id="api">API</h2>
 <h3 id="schedulardelayjob-timeout">schedular.delay(job, timeout)</h3>
 <p>Schedule a job for execution</p>
@@ -61,6 +62,8 @@ schedule.delay(myJob, <span class="hljs-number">2000</span>);</code></pre>
 <li>Db interactions are also atomic</li>
 <li>Jobs emitted have no immediate relationship to one another</li>
 </ul>
+<h2 id="prior-art">Prior Art</h2>
+<p>Originally based on <a href="https://github.com/thatguydan/delayed-job">https://github.com/thatguydan/delayed-job</a> But that project hasn't been update in six years</p>
   </div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64038939-2"></script>
 <script>
