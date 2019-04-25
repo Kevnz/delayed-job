@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>@kev_nz/delayed-job - Kevin Isom</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="extend.css" />
+  <meta name="description" content="Redis backed Node.js implementation of delayed job" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/github.min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="@kev_nz/delayed-job - Kevin Isom" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="@kev_nz/delayed-job - Redis backed Node.js implementation of delayed job - Kevin Isom" />
+  <meta property="og:url" content="https://kevinisom.info/delayed-job" />
+  <meta property="og:image" content="https://avatars3.githubusercontent.com/u/62547?s=400&amp;v=4" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@kev_nz" />
+  <meta name="twitter:title" content="@kev_nz/delayed-job - Redis backed Node.js implementation of delayed job - Kevin Isom" />
+  <meta name="twitter:description" content="Redis backed Node.js implementation of delayed job" />
+  <meta name="twitter:image" content="https://avatars3.githubusercontent.com/u/62547?s=400&amp;v=4" />
+
+</head>
+
+<body>
+  <div class="container">
+  <h1 id="delayed-job">delayed-job</h1>
+<p>delayed-job is a horizontally scalable Node.js implementation of Ruby's delayed_job. Using semaphore locks it aims to provide an atomic interface to a federation of workers operating on the same job queue. Initial work has focussed on a Redis backed database, however more backend implementations are possible.</p>
+<h2 id="installation">Installation</h2>
+<pre><code class="hljs bash language-bash">npm install @kev_nz/delayed-job</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="hljs javascript language-javascript"><span class="hljs-keyword">const</span> Scheduler = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@kev_nz/delayed-job'</span>);
+
+<span class="hljs-keyword">const</span> schedule = Scheduler.createSchedule({
+  <span class="hljs-attr">url</span>: <span class="hljs-string">''</span>,
+  <span class="hljs-attr">backend</span>: {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'redis'</span>, <span class="hljs-comment">// memory is also available</span>
+    jobHoldingBay: <span class="hljs-string">'myUniqueListKey'</span>
+  }
+});
+
+schedule.on(<span class="hljs-string">'job'</span>, job =&gt; {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Received job'</span>,job);
+});
+
+<span class="hljs-keyword">const</span> myJob = {
+  <span class="hljs-attr">title</span>: <span class="hljs-string">'Great Gig In The Sky'</span>
+};
+
+schedule.delay(myJob, <span class="hljs-number">2000</span>);</code></pre>
+<h2 id="api">API</h2>
+<h3 id="schedulardelayjob-timeout">schedular.delay(job, timeout)</h3>
+<p>Schedule a job for execution</p>
+<h2 id="assumptions">Assumptions</h2>
+<ul>
+<li>errors thrown will result in re-establishing the scheduler [expand]</li>
+<li>Single atomic source of truth</li>
+<li>Db interactions are also atomic</li>
+<li>Jobs emitted have no immediate relationship to one another</li>
+</ul>
+  </div>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-64038939-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-64038939-2');
+</script>
+
+</body>
