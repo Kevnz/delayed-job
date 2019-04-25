@@ -8,9 +8,9 @@ const scheduler = Scheduler.createScheduler({
 })
 
 scheduler.on('job', job => {
-  console.log('Received job', job)
+  console.info('Received job', job)
   // should probably execute the job here
-  console.log(`send email maybe to ${job.data.email}`)
+  console.info(`send email maybe to ${job.data.email}`)
 })
 
 const myJob = {
