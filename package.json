@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Redis backed Node.js implementation of delayed job",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "examples"
+  ],
   "scripts": {
     "test": "node ./examples/test.js",
     "lint:examples": "eslint ./examples",
@@ -12,23 +17,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kev_nz/delayed-job.git"
+    "url": "https://github.com/Kevnz/delayed-job.git"
   },
   "keywords": [
     "Delayed",
     "Job",
-    "Redis"
+    "Redis",
+    "scheduler",
+    "queue",
+    "job queue"
   ],
   "author": "Kevin Isom<kevin.isom@gmail.com>",
   "license": "MIT",
   "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/Kevnz/delayed-job/issues"
+  },
+  "homepage": "https://kevinisom.info/delayed-job",
   "devDependencies": {
-    "@kev_nz/eslint-config": "^1.0.0",
-    "eslint": "^5.7.0"
+    "@kev_nz/eslint-config": "^3.2.1",
+    "@kev_nz/publisher": "^3.0.1",
+    "eslint": "^5.16.0"
   },
   "dependencies": {
     "cache-base": "^4.0.0",
-    "ioredis": "^4.2.0",
-    "ioredis-mock": "^4.1.1"
+    "ioredis": "^4.9.0",
+    "ioredis-mock": "^4.9.0"
   }
 }

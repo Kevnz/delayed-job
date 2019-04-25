@@ -1,14 +1,15 @@
-delayed-job
-===========
+# delayed-job
+
 delayed-job is a horizontally scalable Node.js implementation of Ruby's delayed_job. Using semaphore locks it aims to provide an atomic interface to a federation of workers operating on the same job queue. Initial work has focussed on a Redis backed database, however more backend implementations are possible.
 
-# Installation
+## Installation
 
 ```bash
 npm install @kev_nz/delayed-job
 ```
 
-# Usage
+## Usage
+
 ```javascript
 const Scheduler = require('@kev_nz/delayed-job');
 
@@ -31,12 +32,12 @@ const myJob = {
 schedule.delay(myJob, 2000);
 ```
 
-# API
+## API
 
-## schedular.delay(job, timeout)
+### schedular.delay(job, timeout)
 Schedule a job for execution
 
-# Assumptions
+## Assumptions
 * errors thrown will result in re-establishing the scheduler [expand]
 * Single atomic source of truth
 * Db interactions are also atomic
