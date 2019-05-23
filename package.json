@@ -13,7 +13,10 @@
     "lint:examples": "eslint ./examples",
     "work:redis": "node ./examples/redis.js",
     "work:memory": "node ./examples/memory.js",
-    "lint": "eslint ./lib"
+    "lint": "eslint ./lib",
+    "preversion": "npm run lint && npm test",
+    "postversion": "npm publish --access=public",
+    "postpublish": "git push origin --all --follow-tags && npx publisher"
   },
   "repository": {
     "type": "git",
