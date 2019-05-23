@@ -15,6 +15,7 @@ scheduler.on('job', job => {
 
 const myJob = {
   title: 'Great Gig In The Sky',
+  task: 'email1',
   data: {
     email: 'emailme@example.com',
     firstName: 'Test',
@@ -23,6 +24,7 @@ const myJob = {
 }
 const myJob2 = {
   title: 'Second Gig In The Sky',
+  task: 'email2',
   data: {
     email: 'emailmemore@example.com',
     firstName: 'Just',
