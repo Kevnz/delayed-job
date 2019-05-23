@@ -1,6 +1,6 @@
 {
   "name": "@kev_nz/delayed-job",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Redis backed Node.js implementation of delayed job",
   "main": "index.js",
   "files": [
